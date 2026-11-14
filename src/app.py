@@ -84,7 +84,7 @@ def home():
 
 def features():
     with st.sidebar:
-        st.markdown('<div class="sb-tab"><i></i>Data source</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sb-tab"><i></i>Data Source</div>', unsafe_allow_html=True)
         source = st.radio("Input", ["Synthetic traffic (600 requests)", "Preset scenario", "Upload log file"], label_visibility="collapsed")
         logs = pd.DataFrame()
         if source.startswith("Synthetic"):
