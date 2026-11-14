@@ -1,4 +1,4 @@
-# 🛡️ SentinelLog AI
+# SentinelLog AI
 
 Anomaly detection for server logs: an Isolation Forest finds statistically unusual requests, signature rules label known attack patterns, and a local LLM (Ollama) writes short incident triage notes. Without Ollama it falls back to an offline heuristic and labels it as such.
 
