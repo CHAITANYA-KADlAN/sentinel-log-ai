@@ -6,6 +6,7 @@ OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "mistral")
 
 ADVICE = {
+    "Brute force": ("Likely credential brute-force attempt.", "Rate-limit or block the IP, enforce MFA, and review the targeted account."),
     "SQL injection": ("Likely SQL injection attempt.", "Block the source IP, review WAF rules, and use parameterized queries."),
     "Path traversal": ("Likely directory traversal / sensitive file access attempt.", "Block the source, verify file permissions, and normalize request paths."),
     "XSS": ("Likely cross-site scripting probe.", "Enable output encoding and a Content-Security-Policy; block the source."),

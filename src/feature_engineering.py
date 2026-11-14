@@ -49,3 +49,15 @@ def extract_features(df: pd.DataFrame) -> pd.DataFrame:
     X["ip_error_ratio"] = grp["_err"].transform("mean")
     X["ip_unique_paths"] = grp["request_path"].transform("nunique")
     return X
+
+
+MITRE = {"SQL injection": "T1190", "Path traversal": "T1190", "XSS": "T1189", "Recon / probing": "T1595", "Brute force": "T1110"}
+
+
+def brute_force_mask(df: pd.DataFrame, min_hits: int = 3) -> pd.Series:
+    """True where one IP repeatedly fails (401/403) against the same path."""
+    fails = df[df["status_code"].isin([401, 403])]
+    counts = fails.groupby(["ip", "request_path"])["ip"].transform("size")
+    mask = pd.Series(False, index=df.index)
+    mask.loc[counts[counts >= min_hits].index] = True
+    return mask

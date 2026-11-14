@@ -1,4 +1,4 @@
-# SentinelLog AI
+# 🛡️ SentinelLog AI
 
 Anomaly detection for server logs: an Isolation Forest finds statistically unusual requests, signature rules label known attack patterns, and a local LLM (Ollama) writes short incident triage notes. Without Ollama it falls back to an offline heuristic and labels it as such.
 
@@ -26,3 +26,14 @@ The synthetic dataset carries ground-truth labels, so the dashboard reports reca
 
 - Unsupervised detection on synthetic data is a demo, not proof; next step is a public dataset (e.g. CIC-IDS / HTTP CSIC 2010) with a proper evaluation.
 - Signatures catch known patterns; the ML layer is what can surface unfamiliar behaviour, so call it anomaly detection, not "zero-day" detection.
+
+## Features
+
+- Isolation Forest scoring plus signature rules mapped to MITRE ATT&CK technique IDs
+- Brute-force detection (repeated 401/403 per IP and path), top-offender ranking, severity filter
+- Exports: incident report (CSV) and IP blocklist (TXT)
+- Liquid-glass UI with a scroll-docking hero, 2-D radar / 3-D heat map cycle, and animated geometric background
+
+## License
+
+MIT. See `LICENSE`. Legal notices (no warranty, authorized use, privacy, third-party attributions) are in the app's Learn more section.
